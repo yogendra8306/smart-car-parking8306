@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <meta charset="UTF-8">
+    <title>Smart Parking Premium</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="logo">🚗 Smart Parking</div>
+
+        <nav class="nav-links">
+       
+           <a href="#" onclick="toggleBookings()" class="booking-link">
+    <i class="fas fa-calendar-check"></i> Bookings
+    <span id="bookingCount" class="badge">0</span>
+</a>
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+
+            <!-- ✅ Popup trigger -->
+            <a href="#" onclick="openContact()">
+                <i class="fas fa-phone"></i> Contact
+            </a>
+        </nav>
+
+        <div class="profile">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+ 
+    <!-- ================= CONTACT POPUP ================= -->
+    <div id="contactPopup" class="popup">
+        <div class="contact-modal">
+
+            <h3>📞 Management Contact</h3>
+
+            <p><i class="fas fa-user-tie"></i> Parking Manager</p>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <a href="tel:8306749067">8306749067</a>
+            </p>
+
+            <p>
+                <i class="fas fa-phone"></i>
+                <a href="tel:9352986239">9352986239</a>
+            </p>
+
+            
+        </div>
+    </div>
+<!-- ================= BOOKINGS POPUP ================= -->
+ <div id="reader" style="width:300px;"></div>
+<div id="bookingPopup" class="booking-popup">
+    <div class="booking-box">
+        <h3>🎫 My Tickets</h3>
+        <div id="bookingList"></div>
+    </div>
+</div>
+    <!-- Location Title -->
+    <h2 id="locationTitle" style="text-align:center; margin-top:20px;">
+        🚗 Smart Parking Premium
+    </h2>
+
+    <!-- Dark Mode Toggle -->
+    <button id="themeToggle" class="theme-btn">🌙</button>
+
+    <!-- CCTV Camera -->
+    <div class="cctv">
+        📹 CCTV Live Monitoring
+        <div class="camera-lens"></div>
+    </div>
+
+    <!-- Smart Gate -->
+    <div class="gate-container">
+        <div class="gate" id="gate"></div>
+    </div>
+
+    <!-- ================= VEHICLE PARKING ================= -->
+
+    <div class="parking-section">
+        <h2>🏍 Bike Parking (Available: <span id="bikeCount">0</span>)</h2>
+        <div id="bikeArea" class="slot-container"></div>
+    </div>
+
+    <div class="parking-section">
+        <h2>🚗 Car Parking (Available: <span id="carCount">0</span>)</h2>
+        <div id="carArea" class="slot-container"></div>
+    </div>
+
+    <div class="parking-section">
+        <h2>🚚 Truck Parking (Available: <span id="truckCount">0</span>)</h2>
+        <div id="truckArea" class="slot-container"></div>
+    </div>
+
+
+    <!-- ================= BILL POPUP ================= -->
+
+    <div id="billPopup" class="popup">
+        <div class="bill-box">
+
+            <h3>📄 Booking Details</h3>
+
+            <p id="billSlot"></p>
+            <p id="amountDisplay"></p>
+
+            <input type="text" id="userName" placeholder="Enter Your Name">
+            <input type="text" id="vehicleNumber" placeholder="Vehicle Number">
+
+            <label>Select Date:</label>
+            <input type="date" id="bookingDate">
+
+            <label>Select Time:</label>
+            <input type="time" id="bookingTime">
+
+            <button class="pay-btn" onclick="payNow()">💳 Pay Now</button>
+            <button class="close-btn" onclick="closePopup()">Cancel</button>
+
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="script.js"></script>
+    <script src="cctv.js"></script>
+
+    <!-- ✅ Contact Popup Script -->
+    <script>
+        function openContact() {
+            document.getElementById("contactPopup").style.display = "flex";
+        }
+
+        function closeContact() {
+            document.getElementById("contactPopup").style.display = "none";
+        }
+    </script>
+<script>
+    function openContact() {
+        document.getElementById("contactPopup").style.display = "block";
+    }
+
+    function closeContact() {
+        document.getElementById("contactPopup").style.display = "none";
+    }
+
+    // Close when clicking outside
+    window.onclick = function(e) {
+        let popup = document.getElementById("contactPopup");
+        if (!e.target.closest('.contact-modal') && !e.target.closest('.nav-links a')) {
+            popup.style.display = "none";
+        }
+    }
+</script>
+</body>
+
+</html>
