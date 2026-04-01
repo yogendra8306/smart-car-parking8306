@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==============================
 
     const config = {
-        bike: { count: 40, price: 20, icon: "🏍", color: "#00e5ff" },
+        bike: { count: 40, price: 2, icon: "🏍", color: "#00e5ff" },
         car: { count: 30, price: 50, icon: "🚗", color: "#00ccff" },
         truck: { count: 10, price: 100, icon: "🚚", color: "#ff9900" }
     };
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const order = await res.json();
 
             const options = {
-                key: "YOUR_KEY_ID", // 🔥 PUT YOUR REAL KEY
+                key: "rzp_test_SY9wTSO8BxxTM1", // 🔥 PUT YOUR REAL KEY
                 amount: order.amount,
                 currency: "INR",
                 name: "Yogendra Parking",
