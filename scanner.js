@@ -12,14 +12,19 @@ function startScanner() {
 
             alert("QR Scanned: " + decodedText);
 
-            // Verify from backend
-            const res = await fetch(`http://localhost:5000/verify/${decodedText}`);
-            const data = await res.json();
+            try {
+                const res = await fetch(`https://yogendra-parking.onrender.com/verify/${decodedText}`);
+                const data = await res.json();
 
-            if (data.valid) {
-                alert("✅ Entry Allowed");
-            } else {
-                alert("❌ Invalid Ticket");
+                if (data.valid) {
+                    alert("✅ Entry Allowed");
+                } else {
+                    alert("❌ Invalid Ticket");
+                }
+
+            } catch (err) {
+                alert("⚠️ Server Error");
+                console.error(err);
             }
 
             scanner.stop();
