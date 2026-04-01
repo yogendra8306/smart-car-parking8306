@@ -24,8 +24,8 @@ db.connect(err => {
 
 // Razorpay
 const razorpay = new Razorpay({
-    key_id: "YOUR_KEY_ID",
-    key_secret: "YOUR_KEY_SECRET"
+    key_id: "rzp_test_SY9wTSO8BxxTM1",
+    key_secret: "x3PXTb1wYhpRF2EtEpkzcCzI"
 });
 
 // HOME
